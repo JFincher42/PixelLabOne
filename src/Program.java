@@ -122,6 +122,14 @@ public class Program extends PApplet {
 	}
 
 	/**
+	 * Add code for the Posterize Activity (Activity 4 in the project documentation) here. 
+	 * You are encouraged to) write helper methods to structure your code.
+	 */
+	void posterizeActivity() {
+		// Your code goes here
+	}
+	
+	/**
 	 * Add code for the Extra Credit Blur Activity here. 
 	 * You are encouraged to) write helper methods to structure your code. In particular, call
 	 * method blendImage from here.
