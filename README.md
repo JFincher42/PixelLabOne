@@ -1,7 +1,7 @@
 Pixel Lab I: Grayscale Image Processing
 =======================================
 This project is inspired by the CollegeBoard AP CS “Picture Lab” developed by Barbara Ericson of the Georgia Institute of Technology.
-**Points: 50 + 10 EC**
+**Points: 60 + 15 EC**
 
 Introduction
 ------------
@@ -13,11 +13,11 @@ Background
 ----------
 A digital image is a 2D array of pixels. Each pixel is a small square of a uniform color. When viewed from a distance, the individual pixels appear to merge into a continuous image.
 
-A pixel’s color is often represented as a triple of numbers, (r, g, b), representing the amount of red, green and blue in the image. The range of values allowed for each number is commonly [0,255], with 0 representing no color and 255 representing the maximum possible value of that color. Thus, the triple (255, 0, 0) represents “pure” red, (0, 255, 0) represents “pure” green, and (0, 0, 255) represents “pure” blue.  (Side note: the range [0, 255] represents 256, or 28 different values. This is the exact number of distinct values that can be represented in 8 bits, which is 1 byte. This allows an (r,g,b) triple representing a single pixel to be packed into 3 bytes.)
+A pixel’s color is often represented as a triple of numbers, (r, g, b), representing the amount of red, green and blue in the image. The range of values allowed for each number is [0,255], with 0 representing no color and 255 representing the maximum possible value of that color. Thus, the triple (255, 0, 0) represents “pure” red, (0, 255, 0) represents “pure” green, and (0, 0, 255) represents “pure” blue.  (Side note: the range [0, 255] represents 256 different values. This is the exact number of distinct values that can be represented in 8 bits, which is 1 byte. This allows an (r,g,b) triple representing a single pixel to be packed into 3 bytes.)
 
 In this first Pixel Lab, we will restrict ourselves to “grayscale” images – images that are monochrome and range from black, through a series of grays, to white. Gray level can be represented by a single integer in the interval [0, 255].
 
-Since a grayscale pixel can be represented by a single integer, the entire grayscale image can be represented by a 2D array of integers. Specifically, the integer at row i and column j in the 2D array represents the gray level of the pixel located i pixel rows down and j pixels to the right (from the top left corner of the image).
+Since a grayscale pixel can be represented by a single integer, the entire grayscale image can be represented by a 2D array of integers. Specifically, the integer at row i and column j in the 2D array represents the gray level of the pixel located i pixel rows down and j pixels to the right from the top left corner of the image.
 
 For example, the array:
 
@@ -37,7 +37,7 @@ Representing a grayscale image as a 2D array of integers provides enormous oppor
  
 Activity 1: Understand the initial project sample
 -------------------------------------------------
-This lab uses the Processing library from <https://www.processing.org>. The proper Processing library has been included for you in this project - for more information, visit the link and dig in!
+This lab uses the Processing library from <https://www.processing.org>. The proper Processing library for Java has been included for you in this project - for more information, visit the link above and dig in!
 
 Open project PixelLabOne. The project has two classes, `Program` and `PixelLab`. You will write all your code as methods added to the `Program` class. The `PixelLab` class contains methods to load, save and display images, and will remain unchanged in this project.
 
@@ -57,7 +57,7 @@ Compile and run the program. The relevant code for this activity is in the `Prog
 
 Cut and paste these questions into OneNote, and submit them and your answers under the Homework tab in a new page titled "PixelLab - Activity One".  *Please use this naming scheme to make it easier for us to grade.*
 
-Comment out the introActivity method call in the draw method of the Program class once you've completed this activity.  
+Comment out the `introActivity()` method call in the `draw()` method of the `Program` class once you've completed this activity.  
 
 Activity 2: Striping images
 ---------------------------
@@ -69,16 +69,17 @@ The end goal of this activity is to darken horizontal stripes of an image. For e
 
 **Implementation Steps**
 
-1.  In the Program class, just under the `stripeActivity()` method, write a new method called `scalarMultiply()` that takes two parameters:
+1.  In the `Program` class, just under the `stripeActivity()` method, write a new method called `scalarMultiply()` that takes two parameters:
     - a 1D array of integers, and
     - a double parameter called `factor`.  
-  The method modifies the elements of the array by multiplying each of the elements of the array by factor, discarding any fractional portion after the multiplication.  Test this method by calling it from main with a small integer array and printing out the results. For example, if the input array is {2, 3, 4} and factor is 0.5, the array’s elements should be {1, 1, 2} after the call to `scalarMultiply()`. Remember that the method modifies the array in place; it does not return anything.  Once your `scalarMultiply()` method is working correctly, remove you test code from main.
-2.  Select an image of your choice to be an input image. It should preferably not be larger than about 500x500, though you should feel free to experiment with larger images (how many pixels does a 500x500 image have?).  Save this image in your project's "images" folder.
+  The method modifies the elements of the array by multiplying each of the elements of the array by factor, discarding any fractional portion after the multiplication.  Test this method by calling it from main with a small integer array and printing out the results. For example, if the input array is {2, 3, 4} and factor is 0.5, the array’s elements should be {1, 1, 2} after the call to `scalarMultiply()`. Remember that the method modifies the array in place; it does not return anything.  Once your `scalarMultiply()` method is working correctly, remove your test code from main.
+2.  Select an image of your choice to be an input image. It should preferably not be larger than about 500x500, though you should feel free to experiment with larger images (how many pixels does a 500x500 image have?).  Save this image in your project's `images` folder.
 3.  Use a `PixelLab` method to load the image into a 2D array and display it (it will display as a grayscale image even if the original image is in color). This code goes into the `stripeActivity()` method of the `Program` class.
 4.  Write a method call `stripeImage()` that takes a 2D `int` array and modifies it in place, darkening horizontal strips of the image as illustrated above. This method must call the `scalarMultiply()` method you wrote earlier. The trick is to call it only selectively, so that the stripe pattern forms (if you were to call it on every row the entire image would be darkened).  
 *Hint*: consider dividing the row index by a constant value, such as 20 (and it is good practice to define this “magic number” as a class constant). Can you use the result of this division to decide whether or not to stripe every alternate band of rows?
-5.  In the `stripeActivity()` method of the `Program` class, write code to display the 2D array after calling `stripeImage()`. It should display the stripe pattern. Save the result in your images folder to an output file called stripeOutput.JPG, and submit the output images to GitHub as part of your submission.
+5.  In the `stripeActivity()` method of the `Program` class, write code to display the 2D array after calling `stripeImage()`. It should display the stripe pattern.
 
+Save the result in your `images` folder to an output file called stripeOutput.JPG, and submit the output images to GitHub as part of your submission.  
 
 Comment out the `stripeActivity()` method call in the draw method of the `Program` class once you've completed this activity.  
  
@@ -108,19 +109,19 @@ The two images used in the example are [cumbria.jpg]((https://commons.wikimedia.
 2.  In the `blendActivity()` method, write code to load and display the two images, just to make sure that there are no issues with loading the input images.
 3.  Just below the `blendActivity()` method, write a new method called `uniformlyBlend()` that takes two input images (two 2D `int` arrays, each representing one input image) and returns a 2D `int` array representing the blended image.
 
-    The method must first allocate an array to contain the posterized image. The dimension of this array must be decided with some care, because the input arrays may not have identical dimensions. The returned array should have dimensions just large enough to fit the smaller of the two images in either dimension. For example, if the input arrays have dimensions 100x200 and 150x150, the output 2D array size should be 100x150.  
+    The method must first allocate an array to contain the blended image. The dimension of this array must be decided with some care, because the input arrays may not have identical dimensions. The returned array should have dimensions just large enough to fit the smaller of the two images in either dimension. For example, if the input arrays have dimensions 100x200 and 150x150, the output 2D array size should be 100x150.  
 
     How can you determine the width and height of a 2D array?  
 
     Next, iterate over all pixels using a nested for loop, setting each blended pixel to the average of the corresponding pixels from the two input images.  
 
-4.  Call `uniformlyBlend()` from `blendActivity()`, passing the two input arrays and save the resultant blended array into a file called uniformBlendOutput.jpg.
+4.  Call `uniformlyBlend()` from `blendActivity()`, passing the two input arrays and save the resultant blended array into a file called uniformBlendOutput.jpg in your `images` folder.
 
-5.  Just after the `uniformlyBlend()` method, create a second blending method called `leftToRightBlend()` that has the same signature as `uniformlyBlend()`, but performs a left-to-right blend as illustrated earlier. Call this method from `blendActivity()`, creating and saving this version of the image to file leftToRightBlendOutput.jpg.
+5.  Just after the `uniformlyBlend()` method, create a second blending method called `leftToRightBlend()` that has the same signature as `uniformlyBlend()`, but performs a left-to-right blend as illustrated earlier. Call this method from `blendActivity()`, creating and saving this version of the image to file leftToRightBlendOutput.jpg in your `images` folder.
 
-    The fractional contribution of the first and second image depends on the column number. Therefore compute a fraction (say frac) that depends on the column index. This fraction starts out as 0 when the column index is 0 and becomes 1.0 when the column index is at its maximum value (representing the right-most column). This fraction can be used in the expression that blends pixels from the two image sources according to the following expression: `(1.0 – frac)*pix1 + frac*pix2`, where pix1 is a pixel from the first input image and pix2 is the corresponding pixel from the second input image. Remember that grayscale pixel values are ints, so use casting where appropriate.
+    The fractional contribution of the first and second image depends on the column number. Therefore, compute a fraction (say frac) that depends on the column index. This fraction starts out as 0 when the column index is 0 and becomes 1.0 when the column index is at its maximum value (representing the right-most column). This fraction can be used in the expression that blends pixels from the two image sources according to the following expression: `(1.0 – frac)*pix1 + frac*pix2`, where pix1 is a pixel from the first input image and pix2 is the corresponding pixel from the second input image. Remember that grayscale pixel values are `int` values, so use casting where appropriate.
 
-    Make sure you submit your source and final blended images as part of your GitHub submission.  
+Make sure you submit your source and final blended images as part of your GitHub submission.  
     
 Activity 4: Posterizing an image
 --------------------------------
@@ -140,15 +141,16 @@ You will effect posterization on an grayscale image of your own choosing, reduci
 
     The method must first allocate an array to contain the posterized pixels. The dimension of this array should match the dimensions of the source array.
     
-    The method should also define the ranges for each level in the posterized image.  As an example, consider an image posterized to just two levels - black and white.
-    TBD - insert source and dest images here.
-    In this example, two levels were specified, so the ranges were calculated to be 0-127, and 128-255.
+    The method should also define the ranges for each level in the posterized image.  As an example, consider an image posterized to just two levels - black and white.  
+![Posterizing source](./samples/wagon.jpg) ![Posterizing result](./samples/wagon-level2.jpg)
+
+    In this example, two levels were specified, so the ranges were calculated to be 0-127, and 128-255.  Every pixel in the image was mapped to one of these levels.
     
-    The method also needs to define the final output color for each level.  For our purposes, the first level should always output color 0 (black), and the last level should always output color white (255).  The remaining levels should be evenly distributed between those two values.  For example, if levels=4, your four output colors should be 0, 85, 170, and 255.    
+    The method also needs to define the final output color for each level.  For our purposes, the first level should always output color 0 (black), and the last level should always output color white (255).  The remaining levels should be evenly distributed between those two values.  For example, if levels=4, your four output colors should be 0, 85, 170, and 255.  In the example above, the output colors were 0 (black) and 255 (white). 
 
-    Once you have your level intervals and values defined, iterate over all pixels, setting each output pixel to the value of the level to which that pixel belongs.  
+    Once you have your level intervals and output values defined, iterate over all pixels, setting each output pixel to the value of the level to which the input pixel belongs.  
 
-4.  Call `posterize()` from `posterizeActivity()`, passing the input array and level, and save the resultant posterized array into a file called posterizeOutput-<level>.jpg, where <level> is the number of levels.  You should call `posterize()` four times with the same image at four different levels:  64, 32, 16, and 4.
+4.  Call `posterize()` from `posterizeActivity()`, passing the input array and level, and save the resultant posterized image into a file called posterizeOutput-level<level>.jpg, where <level> is the number of levels.  You should call `posterize()` four times with the same image at four different levels:  64, 32, 16, and 4.
 
 Make sure you submit your source and final output images as part of your GitHub submission.
 
@@ -173,31 +175,35 @@ There are 50 total points available, plus 5 extra credit points.  Grading will b
 **Functional Correctness**
 - **5 points**: Activity 1 questions answered (cut/paste the questions and your answers into OneNote)  
 - **5 points**: You have picked your own input images (not the ones supplied by the project)  
-- **4 points**: Methods have the proper signature and the correct return statements
+- **5 points**: Methods have the proper signature and the correct return values  
     - **1 point**: `scalarMultiply()`
     - **1 point**: `stripeImage()`
     - **1 point**: `uniformlyBlend()`
     - **1 point**: `leftToRightBlend()`  
-- **16 points**: Methods function properly
+    - **1 point**: `posterize()`  
+- **20 points**: Methods function properly
     - **4 points**: `scalarMultiply()`
     - **4 points**: `stripeImage()`
     - **4 points**: `uniformlyBlend()`
     - **4 points**: `leftToRightBlend()`
+    - **4 points**: `posterize()`
 - **5 points**: Output images generated (and submitted to GitHub) for each of the activities
 
-**TOTAL: 35 points**
+**TOTAL: 40 points**
 
 **Coding Style**
-- **3 points**: Readability: Indentation
-- **3 points**: Readability: Meaningful method and variable names.
-- **3 points**: Readability: Comments/Documentation.
-- **3 points**: Efficiency: Code duplication.
-- **3 points**: Efficiency: Smart algorithm.
+- **4 points**: Readability: Indentation
+- **4 points**: Readability: Meaningful method and variable names.
+- **4 points**: Readability: Comments/Documentation.
+- **4 points**: Efficiency: Code duplication.
+- **4 points**: Efficiency: Smart algorithm.
 
-**TOTAL: 15 points**
+**TOTAL: 20 points**
 
 **EXTRA CREDIT**
+- **1 points**: You have picked your own input image.
 - **2 point**: `blurImage()` method has the proper signature
-- **8 points**: `blurImage()` method functions properly
+- **10 points**: `blurImage()` method functions properly
+- **2 points**: Output images generated (and submitted to GitHub) for this activity.
 
-**TOTAL: 10 points**
+**TOTAL: 15 points**
