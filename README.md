@@ -34,7 +34,7 @@ represents the grayscale image below (shown greatly magnified so that each pixel
 This tiny image is only 3 pixels wide and it has 2 rows, directly corresponding to the two rows of the array.
 
 Representing a grayscale image as a 2D array of integers provides enormous opportunity for image analysis, synthesis and manipulation. For example, the problem of detecting a face in an image transforms into a problem of detecting a pattern in a 2D array of numbers using various mathematical techniques. Blurring an image (one of the activities in this this lab) consists of averaging the pixel values in the neighborhood of each pixel.  
- 
+
 Activity 1: Understand the initial project sample
 -------------------------------------------------
 This lab uses the Processing library from <https://www.processing.org>. The proper Processing library for Java has been included for you in this project - for more information, visit the link above and dig in!
@@ -57,7 +57,7 @@ Compile and run the program. The relevant code for this activity is in the `Prog
 
 Cut and paste these questions into OneNote, and submit them and your answers under the Homework tab in a new page titled "PixelLab - Activity One".  *Please use this naming scheme to make it easier for us to grade.*
 
-Comment out the `introActivity()` method call in the `draw()` method of the `Program` class once you've completed this activity.  
+Comment out the `introActivity()` method call in the `draw()` method of the `Program` class once you've completed this activity.  
 
 Activity 2: Striping images
 ---------------------------
@@ -82,7 +82,7 @@ The end goal of this activity is to darken horizontal stripes of an image. For e
 Save the result in your `images` folder to an output file called stripeOutput.JPG, and submit the output images to GitHub as part of your submission.  
 
 Comment out the `stripeActivity()` method call in the draw method of the `Program` class once you've completed this activity.  
- 
+
 Activity 3: Blending two images
 -------------------------------
 In this activity, you will write code that blends two input images into a single output image.  This activity will give you experience writing methods that take in multiple arrays as input, and also create and return an entire array. Blending images can be a lot of fun, depending on which images you choose to blend!
