@@ -1,6 +1,6 @@
 Pixel Lab I: Grayscale Image Processing
 =======================================
-This project is inspired by the CollegeBoard AP CS “Picture Lab” developed by Barbara Ericson of the Georgia Institute of Technology.
+This project is inspired by the CollegeBoard AP CS “Picture Lab” developed by Barbara Ericson of the Georgia Institute of Technology.  
 **Points: 60 + 15 EC**
 
 Introduction
@@ -152,7 +152,7 @@ You will effect posterization on an grayscale image of your own choosing, reduci
 
 4.  Call `posterize()` from `posterizeActivity()`, passing the input array and level, and save the resultant posterized image into a file called posterizeOutput-level<level>.jpg, where <level> is the number of levels.  You should call `posterize()` four times with the same image at four different levels:  64, 32, 16, and 4.
 
-Make sure you submit your source and final output images as part of your GitHub submission.
+Make sure you submit your source and final output images as part of your GitHub submission.  
 
 Extra Credit Activity: Blurring Images
 --------------------------------------
@@ -166,8 +166,8 @@ Write a method called `blurImage()` that takes a 2D int array representing an im
 
 Implementation steps are left open ended, as long as the code is able to blur an image read from an input file, display it on the screen and write out the modified file.  Your output image should be named blurOutput.jpg.
 
-Make sure you submit your source and final output images as part of your GitHub submission.
- 
+Make sure you submit your source and final output images as part of your GitHub submission.  
+
 Grading
 -------
 There are 50 total points available, plus 5 extra credit points.  Grading will be based on the following rubric:
