@@ -1,6 +1,6 @@
 Pixel Lab I: Grayscale Image Processing
 =======================================
-This project is inspired by the CollegeBoard AP CS “Picture Lab” developed by Barbara Ericson of the Georgia Institute of Technology.  
+This project is inspired by the CollegeBoard AP CS "Picture Lab" developed by Barbara Ericson of the Georgia Institute of Technology.  
 **Points: 60 + 15 EC**
 
 Introduction
@@ -13,9 +13,9 @@ Background
 ----------
 A digital image is a 2D array of pixels. Each pixel is a small square of a uniform color. When viewed from a distance, the individual pixels appear to merge into a continuous image.
 
-A pixel's color is often represented as a triple of numbers, (r, g, b), representing the amount of red, green and blue in the image. The range of values allowed for each number is [0,255], with 0 representing no color and 255 representing the maximum possible value of that color. Thus, the triple (255, 0, 0) represents “pure” red, (0, 255, 0) represents “pure” green, and (0, 0, 255) represents “pure” blue.  (Side note: the range [0, 255] represents 256 different values. This is the exact number of distinct values that can be represented in 8 bits, which is 1 byte. This allows an (r,g,b) triple representing a single pixel to be packed into 3 bytes.)
+A pixel's color is often represented as a triple of numbers, (r, g, b), representing the amount of red, green and blue in the image. The range of values allowed for each number is [0,255], with 0 representing no color and 255 representing the maximum possible value of that color. Thus, the triple (255, 0, 0) represents "pure" red, (0, 255, 0) represents "pure" green, and (0, 0, 255) represents "pure" blue.  (Side note: the range [0, 255] represents 256 different values. This is the exact number of distinct values that can be represented in 8 bits, which is 1 byte. This allows an (r,g,b) triple representing a single pixel to be packed into 3 bytes.)
 
-In this first Pixel Lab, we will restrict ourselves to “grayscale” images – images that are monochrome and range from black, through a series of grays, to white. Gray level can be represented by a single integer in the interval [0, 255].
+In this first Pixel Lab, we will restrict ourselves to "grayscale" images – images that are monochrome and range from black, through a series of grays, to white. Gray level can be represented by a single integer in the interval [0, 255].
 
 Since a grayscale pixel can be represented by a single integer, the entire grayscale image can be represented by a 2D array of integers. Specifically, the integer at row i and column j in the 2D array represents the gray level of the pixel located i pixel rows down and j pixels to the right from the top left corner of the image.
 
@@ -61,9 +61,9 @@ Comment out the `introActivity()` method call in the `draw()` method of the `Pro
 
 Activity 2: Striping images
 ---------------------------
-In this activity, you will experiment with modifying parts of an image by passing individual rows of the 2D array representing the image into a method that modifies a 1D array of integers. This will give you experience treating a 2D array as an array of 1D arrays (which, in fact, it is), and also with methods that modify arrays “in place.”
+In this activity, you will experiment with modifying parts of an image by passing individual rows of the 2D array representing the image into a method that modifies a 1D array of integers. This will give you experience treating a 2D array as an array of 1D arrays (which, in fact, it is), and also with methods that modify arrays "in place."
 
-The end goal of this activity is to darken horizontal stripes of an image. For example, the image below left is the original image; the image to the right has been “striped” (the input image was converted to grayscale when it was loaded).
+The end goal of this activity is to darken horizontal stripes of an image. For example, the image below left is the original image; the image to the right has been "striped" (the input image was converted to grayscale when it was loaded).
 
 ![Striping source](./samples/stripesource.jpg) ![Striping result](./samples/striperesult.jpg)
 
@@ -76,7 +76,7 @@ The end goal of this activity is to darken horizontal stripes of an image. For e
 2.  Select an image of your choice to be an input image. It should preferably not be larger than about 500x500, though you should feel free to experiment with larger images (how many pixels does a 500x500 image have?).  Save this image in your project's `images` folder.
 3.  Use a `PixelLab` method to load the image into a 2D array and display it (it will display as a grayscale image even if the original image is in color). This code goes into the `stripeActivity()` method of the `Program` class.
 4.  Write a method call `stripeImage()` that takes a 2D `int` array and modifies it in place, darkening horizontal strips of the image as illustrated above. This method must call the `scalarMultiply()` method you wrote earlier. The trick is to call it only selectively, so that the stripe pattern forms (if you were to call it on every row the entire image would be darkened).  
-*Hint*: consider dividing the row index by a constant value, such as 20 (and it is good practice to define this “magic number” as a class constant). Can you use the result of this division to decide whether or not to stripe every alternate band of rows?
+*Hint*: consider dividing the row index by a constant value, such as 20 (and it is good practice to define this "magic number" as a class constant). Can you use the result of this division to decide whether or not to stripe every alternate band of rows?
 5.  In the `stripeActivity()` method of the `Program` class, write code to display the 2D array after calling `stripeImage()`. It should display the stripe pattern.
 
 Save the result in your `images` folder to an output file called stripeOutput.JPG, and submit the output images to GitHub as part of your submission.  
@@ -156,7 +156,7 @@ Make sure you submit your source and final output images as part of your GitHub 
 
 Extra Credit Activity: Blurring Images
 --------------------------------------
-A sharp image can be made “blurry” by replacing each pixel by an average of itself and its neighboring pixels. This activity provides additional experience with image processing algorithms and working with more complex sub-regions of an array.
+A sharp image can be made "blurry" by replacing each pixel by an average of itself and its neighboring pixels. This activity provides additional experience with image processing algorithms and working with more complex sub-regions of an array.
 
 Write a method called `blurImage()` that takes a 2D int array representing an image and returns a copy of the array that represents a blurry version of the input image (the input array must not be modified by the method). The blurring is done by setting each pixel in the new array to the average of all the pixels in a block (for example, an 11x11 pixel area) centered on the pixel to be blurred. This covers pixels within +/- 5 of the pixel in both the x and y directions. The larger the block that is involved in the averaging, the blurrier the image gets. The image below right was blurred using a 11x11 pixel averaging area.
 
